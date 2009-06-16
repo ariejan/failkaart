@@ -32,8 +32,12 @@ get '/:id' do
 end
 
 post '/fixes' do
-  fix_id = Fix.insert(:text => params[:text], :votes_count => 1)
-  FixesUser.insert(:user_id => current_user, :fix_id => fix_id)
+  if fix = Fix.filter(:text => params[:text]).first
+    redirect "/#{fix[:id]}"
+  else
+    fix_id = Fix.insert(:text => params[:text], :votes_count => 1)
+    FixesUser.insert(:user_id => current_user, :fix_id => fix_id)
+  end
   redirect "/#{fix_id}"
 end
 

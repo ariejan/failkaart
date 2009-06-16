@@ -1,5 +1,5 @@
 # Sinatra
-ENVIRONMENT = 'test'
+ENV['RACK_ENV'] = "test"
 
 app_file = File.join(File.dirname(__FILE__), *%w[.. .. fixedbytm2.rb])
 require app_file

@@ -28,5 +28,14 @@ Feature: Making fun of TextMate 2's long development cycle
     When I fill in "text" with "Something Else <strong>STRONG</strong>"
     And I press "Suggest it!"
     Then I should see "Something Else <strong>STRONG</strong>"
+    
+  Scenario: Posting a fix mulitple times
+    When I fill in "text" with "Duke Nukem Forever"
+    And I press "Suggest it!"
+    Then I should be on 4
+    When I fill in "text" with "Duke Nukem Forever"
+    And I press "Suggest it!"
+    Then I should be on 4
+
 
   

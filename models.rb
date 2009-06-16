@@ -1,4 +1,4 @@
-DB = Sequel.sqlite("fixedbytm2.db")
+DB = ENV['RACK_ENV'] == "test" ? Sequel.sqlite(":memory:") : Sequel.sqlite("fixedbytm2.db")
 
 unless DB.table_exists?(:users)
 	DB.create_table :users do
