@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sequel'
 require 'sinatra'
-require 'rack-flash'
 require 'haml'
 # Database configuration and models
 require 'models'
