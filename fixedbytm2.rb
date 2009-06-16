@@ -74,7 +74,6 @@ get '/:id' do
 end
 
 post '/fixes' do
-  FileUtils.rm_r("public/")
   if fix = Fix.filter(:text => params[:text]).first
     redirect "/#{fix[:id]}"
   else
