@@ -5,7 +5,8 @@
     %a{ :href => "http://fixedbytm2.com/#{@fix[:id]}", :id => "permalink" }
       == http://fixedbytm2.com/#{@fix[:id]}
     \|
-    %a{ :href => "http://twitter.com/home?status=your custom tweet" }
+    %a{ :href => "http://twitter.com/home?status=http://fixedbytm2.com/#{@fix[:id]}++%23fixed_by_tm2" } Tweet this!
+    \|
     %a{ :href => "/"} Random
     - unless @hide_count
       \|
