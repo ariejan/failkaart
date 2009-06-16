@@ -25,7 +25,11 @@ end
 
 get '/:id' do
   @fix = Fix.filter(:id => params[:id]).first
-  cache haml(:fix)
+  if @fix
+    cache haml(:fix)
+  else
+    redirect '/' 
+  end
 end
 
 post '/fixes' do

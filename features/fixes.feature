@@ -14,6 +14,11 @@ Feature: Making fun of TextMate 2's long development cycle
     When I follow "permalink"
     Then I should see a predetermined fix
     
+  Scenario: Viewing an invalid fix
+    When I go to 123456789
+    Then I should see a predetermined fix
+    
+    
   Scenario: Posting a fix
     When I fill in "text" with "Something Else"
     And I press "Suggest it!"
