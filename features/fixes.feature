@@ -15,7 +15,7 @@ Feature: Making fun of TextMate 2's long development cycle
     Then I should see a predetermined fix
     
   Scenario: Viewing an invalid fix
-    When I go to 123456789
+    When I go to g123456789
     Then I should see a predetermined fix
     
     
