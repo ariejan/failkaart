@@ -21,48 +21,6 @@ get '/' do
   haml :fix
 end
 
-get '/style.css' do
-  "body {
-    background: #4d085b;
-    font: 14pt Helvetica;
-    color: white;
-  }
-
-  a {
-    color: #FF5CD4;
-    text-decoration: underline;
-  }
-
-  .fix h1 {
-    font-size:72pt;
-  }
-
-  .yours { 
-    color: #97377d;
-    padding: 10px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    width: 50%;
-    background: white;
-  }
-
-  .yours textarea { 
-    width: 75%;
-    height: 4em;
-    font-size: 24pt;
-  }
-
-  #footer {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    font-size: 75%;
-    margin-top: 50pt;
-  }
-  "
-end
-
-
 get '/:id' do
   @hide_count = true
   @fix = Fix.filter(:id => params[:id]).first
