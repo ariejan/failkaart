@@ -23,6 +23,7 @@ end
 
 
 get '/:id' do
+  @hide_count = true
   @fix = Fix.filter(:id => params[:id]).first
   if @fix
     cache haml(:fix)
@@ -32,6 +33,7 @@ get '/:id' do
 end
 
 post '/fixes' do
+  FileUtils.rm_r("public/")
   if fix = Fix.filter(:text => params[:text]).first
     redirect "/#{fix[:id]}"
   else

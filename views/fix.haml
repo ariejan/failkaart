@@ -6,8 +6,9 @@
       == http://fixedbytm2.com/#{@fix[:id]}
     \|
     %a{ :href => "/"} Random
-    \|
-    == #{Fix.count} fixes!
+    - unless @hide_count
+      \|
+      == #{Fix.count} fixes!
   %br
   %br 
 
