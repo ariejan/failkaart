@@ -1,5 +1,5 @@
 .fix 
-  %h1== #{@fix[:text]} will be fixed by TextMate 2
+  %h1== #{@fix[:text]} fixed by TextMate 2
   %small
     Permalink: 
     %a{ :href => "http://fixedintm2.com/#{@fix[:id]}", :id => "permalink" }
@@ -12,6 +12,6 @@
     %h3 Suggest a fix
     %textarea{ :name => "text" }
     %br
-    will be fixed by TextMate 2
+    fixed by TextMate 2
     %br
     %input{ :type => "submit", :name => "submit", :value => "Suggest it!"}
