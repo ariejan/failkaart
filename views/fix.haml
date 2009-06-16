@@ -14,7 +14,6 @@
     %a{ :href => "/#{Fix.order(:id.desc).first[:id]}" } Last
     %br
     - unless @hide_count
-      \|
       == #{Fix.count} fixes!
   %br
   %br 
