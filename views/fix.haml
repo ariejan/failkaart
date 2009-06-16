@@ -1,0 +1,15 @@
+.fix 
+  %h1== #{@fix[:text]} will be fixed in TextMate 2
+  %small
+    Permalink: 
+    %a{ :href => "http://fixedintm2.com/#{@fix[:id]}", :id => "permalink" }
+      == http://fixedintm2.com/#{@fix[:id]}
+  %br
+  %br 
+
+.yours 
+  %form{ :action => "/fixes", :method => "post" }
+    %h3 Suggest a fix
+    %textarea{ :name => "text" }
+    %br
+    %input{ :type => "submit", :name => "submit", :value => "Suggest it!"}
