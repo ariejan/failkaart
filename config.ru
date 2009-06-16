@@ -6,5 +6,5 @@ Sinatra::Application.default_options.merge!(
   :env => ENV['RACK_ENV']
 )
 
-require 'fixedintm2'
+require 'fixedbytm2'
 run Sinatra.application
