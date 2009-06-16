@@ -1,4 +1,4 @@
-DB = Sequel.sqlite("fixedintm2.db")
+DB = Sequel.sqlite("fixedbytm2.db")
 
 unless DB.table_exists?(:users)
 	DB.create_table :users do
