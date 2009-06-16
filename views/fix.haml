@@ -5,9 +5,14 @@
     %a{ :href => "http://fixedbytm2.com/#{@fix[:id]}", :id => "permalink" }
       == http://fixedbytm2.com/#{@fix[:id]}
     \|
-    %a{ :href => "http://twitter.com/home?status=http://fixedbytm2.com/#{@fix[:id]}++%23fixedbytm2" } Tweet this!
+    %a{ :href => "http://twitter.com/home?status=#{@fix.text} will be fixed in TextMate 2+http://fixedbytm2.com/#{@fix.id}", :target => "_blank" } Tweet this!
+    %br
+    %a{ :href => "/1" } First 
     \|
     %a{ :href => "/"} Random
+    \|
+    %a{ :href => "/#{Fix.order(:id.desc).first[:id]}" } Last
+    %br
     - unless @hide_count
       \|
       == #{Fix.count} fixes!
