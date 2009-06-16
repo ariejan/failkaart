@@ -1,7 +1,7 @@
 # Sinatra
 ENVIRONMENT = 'test'
 
-app_file = File.join(File.dirname(__FILE__), *%w[.. .. fixedbygtm2.rb])
+app_file = File.join(File.dirname(__FILE__), *%w[.. .. fixedbytm2.rb])
 require app_file
 # Force the application name because polyglot breaks the auto-detection logic.
 Sinatra::Application.app_file = app_file
