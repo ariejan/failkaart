@@ -21,6 +21,10 @@ get '/' do
   haml :fix
 end
 
+get '/about' do
+  
+end
+
 get '/style.css' do
   "body {
     background: #4d085b;
