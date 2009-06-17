@@ -6,17 +6,25 @@
     %script{ :src => "/jquery.js?#{Time.now.to_i}", :type => "text/javascript" }
     %script{ :src => "/application.js?#{Time.now.to_i}", :type => "text/javascript" }
   %body
-    %div{ :align => "center" }
+    #container{ :align => "center"}
             
       = yield
-
-      #footer
-        This site uses the
-        %a{ :href => "http://github.com/radar/fixedbytm2"} fixedbytm2
-        %a{ :href => "http://sinatrarb.com"} Sinatra 
-        %br
-        application
-        built by
-        %a{ :href => "http://frozenplague.net"} Ryan Bigg
-        of
-        %a{ :href => "http://mocra.com" } Mocra
+      
+    #footer
+      This site uses the
+      %a{ :href => "http://github.com/radar/fixedbytm2"} fixedbytm2
+      %a{ :href => "http://sinatrarb.com"} Sinatra 
+      %br
+      application
+      built by
+      %a{ :href => "http://frozenplague.net"} Ryan Bigg
+      of
+      %a{ :href => "http://mocra.com" } Mocra
+      
+      %script{ :src => 'http://google-analytics.com/ga.js' :type => 'text/javascript'}
+      
+      %script{ :type => "text/javascript" }
+        try {
+        var pageTracker = _gat._getTracker("UA-9376922-1");
+        pageTracker._trackPageview();
+        } catch(err) {}

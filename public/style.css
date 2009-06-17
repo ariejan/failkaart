@@ -1,3 +1,15 @@
+html, body { 
+  height: 100%; 
+} 
+
+#container { 
+  min-height: 100%; 
+} 
+
+* html #container { 
+  height:  100%; 
+}
+
 body {
   background: #4d085b;
   font: 14pt Helvetica;
@@ -35,4 +47,5 @@ a {
   font-size: 75%;
   margin-top: 50pt;
   text-align: right;
+  clear: both;
 }
