@@ -1,10 +1,12 @@
 require 'rubygems'
 require 'sinatra'
 
-Sinatra::Application.default_options.merge!(
-  :run => false,
-  :env => ENV['RACK_ENV']
-)
+root_dir = File.dirname(__FILE__)
 
-require 'failkaart'
+set :environment,   ENV['RACK_ENV'].to_sym
+set :root,          root_dir
+set :app_file,      File.join(root_dir, 'failkaart.rb')
+disable :run
+
+# require 'failkaart'
 run Sinatra.application
