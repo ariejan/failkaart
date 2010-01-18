@@ -8,5 +8,5 @@ set :root,          root_dir
 set :app_file,      File.join(root_dir, 'failkaart.rb')
 disable :run
 
-# require 'failkaart'
+require 'failkaart'
 run Sinatra::Application
