@@ -12,8 +12,12 @@ set :deploy_to, "/var/rails/#{application}"
 set :user, "root"
 
 namespace :deploy do
-  task :start {}
-  task :stop {}
+  task :start do
+  end
+  
+  task :stop do
+  end
+  
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
