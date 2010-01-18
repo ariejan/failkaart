@@ -6,5 +6,5 @@ Sinatra::Application.default_options.merge!(
   :env => ENV['RACK_ENV']
 )
 
-require 'fixedbytm2'
+require 'failkaart'
 run Sinatra.application

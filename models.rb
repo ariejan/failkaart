@@ -1,4 +1,4 @@
-DB = ENV['RACK_ENV'] == "test" ? Sequel.sqlite(":memory:") : Sequel.sqlite("fixedbytm2.db")
+DB = ENV['RACK_ENV'] == "test" ? Sequel.sqlite(":memory:") : Sequel.sqlite("failkaart.db")
 
 unless DB.table_exists?(:users)
 	DB.create_table :users do
@@ -7,8 +7,8 @@ unless DB.table_exists?(:users)
 	end
 end
 
-unless DB.table_exists?(:fixes)
-	DB.create_table :fixes do
+unless DB.table_exists?(:fails)
+	DB.create_table :fails do
 		primary_key :id
 		integer :user_id
 		string :text
@@ -17,22 +17,22 @@ unless DB.table_exists?(:fixes)
 	end
 end
 
-unless DB.table_exists?(:fixes_users)
-	DB.create_table :fixes_users do
+unless DB.table_exists?(:fails_users)
+	DB.create_table :fails_users do
 		integer :user_id
-		integer :fix_id
+		integer :fail_id
 	end
 end
 
 class User < Sequel::Model
-  many_to_many :fixes
+  many_to_many :fails
 end
 
-class Fix < Sequel::Model
+class Fail < Sequel::Model
   many_to_many :users
 end
 
-class FixesUser < Sequel::Model
+class FailsUser < Sequel::Model
   many_to_one :user
-  many_to_one :fix
+  many_to_one :fail
 end

@@ -5,20 +5,20 @@ require 'haml'
 # Database configuration and models
 require 'models'
 
-require 'sinatra/cache'
+# require 'sinatra/cache'
 
 # toggle for the cache functionality.
-set :cache_enabled, true
+# set :cache_enabled, true
 # sets the default extension for cached files
-set :cache_page_extension, '.html'
+# set :cache_page_extension, '.html'
 # sets the Cache dir to the root of the /public directory.
-set :cache_output_dir, '' # was :cache_dir
+# set :cache_output_dir, '' # was :cache_dir
 
 
 get '/' do
-  count = Fix.count
-  @fix = Fix.limit(1, Kernel.rand(count)).first
-  haml :fix
+  count = Fail.count
+  @fail = Fail.limit(1, Kernel.rand(count)).first
+  haml :fail
 end
 
 get '/about' do
@@ -26,19 +26,32 @@ get '/about' do
 end
 
 get '/style.css' do
-  "body {
-    background: #4d085b;
+  "html, body { 
+    height: 100%; 
+  } 
+
+  #container { 
+    min-height: 100%; 
+  } 
+
+  * html #container { 
+    height:  100%; 
+  }
+
+  body {
+    background: #EB088C;
     font: 14pt Helvetica;
     color: white;
   }
 
   a {
-    color: #FF5CD4;
+    color: #FFFFFF; 
     text-decoration: underline;
+    font-style: italic;
   }
 
-  .fix h1 {
-    font-size:72pt;
+  .fail h1 {
+    font-size:64pt;
   }
 
   .yours { 
@@ -62,6 +75,8 @@ get '/style.css' do
     right: 5px;
     font-size: 75%;
     margin-top: 50pt;
+    text-align: right;
+    clear: both;
   }
   "
 end
@@ -69,22 +84,23 @@ end
 
 get '/:id' do
   @hide_count = true
-  @fix = Fix.filter(:id => params[:id]).first
-  if @fix
-    cache haml(:fix)
+  @fail = Fail.filter(:id => params[:id]).first
+  if @fail
+    # cache haml(:fix)
+    haml(:fail)
   else
     redirect '/' 
   end
 end
 
-post '/fixes' do
-  if fix = Fix.filter(:text => params[:text]).first
-    redirect "/#{fix[:id]}"
+post '/fails' do
+  if fail = Fail.filter(:text => params[:text]).first
+    redirect "/#{fail[:id]}"
   else
-    fix_id = Fix.insert(:text => params[:text], :votes_count => 1)
-    FixesUser.insert(:user_id => current_user, :fix_id => fix_id)
+    fail_id = Fail.insert(:text => params[:text], :votes_count => 1)
+    FailsUser.insert(:user_id => current_user, :fail_id => fail_id)
   end
-  redirect "/#{fix_id}"
+  redirect "/#{fail_id}"
 end
 
 private

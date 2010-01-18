@@ -11,18 +11,19 @@ html, body {
 }
 
 body {
-  background: #4d085b;
+  background: #EB088C;
   font: 14pt Helvetica;
   color: white;
 }
 
 a {
-  color: #FF5CD4;
+  color: #FFFFFF; 
   text-decoration: underline;
+  font-style: italic;
 }
 
-.fix h1 {
-  font-size:72pt;
+.fail h1 {
+  font-size:64pt;
 }
 
 .yours { 

@@ -1,0 +1,28 @@
+.fail 
+  %h1== #{h(@fail[:text])} door de OV-chipkaart
+  %small
+    Permalink: 
+    %a{ :href => "http://ov-failkaart.nl/#{@fail[:id]}", :id => "permalink" }
+      == http://ov-failkaart.nl/#{@fail[:id]}
+    \|
+    %a{ :href => "http://twitter.com/home?status=#{@fail.text} door de OV-chipkaart+http://ov-failkaart.nl/#{@fail.id}", :target => "_blank" } Tweet this!
+    %br
+    %a{ :href => "/1" } Eerste 
+    \|
+    %a{ :href => "/"} Willekeurig
+    \|
+    %a{ :href => "/#{Fail.order(:id.desc).first[:id]}" } Laatste
+    %br
+    - unless @hide_count
+      == #{Fail.count} fails!
+  %br
+  %br 
+
+.yours 
+  %form{ :action => "/fails", :method => "post" }
+    %h3 Wat ging er bij jou stuk?
+    %textarea{ :name => "text" }
+    %br
+    door de OV-chipkaart
+    %br
+    %input{ :type => "submit", :name => "submit", :value => "In/uit checken"}
