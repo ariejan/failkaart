@@ -103,7 +103,14 @@ post '/fails' do
   else
     fail_id = Fail.insert(:text => params[:text], :votes_count => 1)
     FailsUser.insert(:user_id => current_user, :fail_id => fail_id) 
-    Resque.enqueue(Tweet, "#{params[:text]} door de OV-chipkaart" )
+    
+    # Generate a tweet
+    tweet_url = " http://ov-failkaart.nl/#{fail_id}"
+    tweet_length = 140 - tweet_url.size
+    tweet_text = "#{params[:text]} door de OV-chipkaart"[0..tweet_length-1]
+
+    tweet = "#{tweet_text} #{tweet_url}"
+    Resque.enqueue(Tweet, tweet)
   end
   redirect "/#{fail_id}"
 end
