@@ -2,10 +2,13 @@
 %html
   %head
     %title OV-failkaart
-    %link{ :rel => "stylesheet", :href => "/style.css?#{Time.now.to_i}"}
+    %link{ :rel => "stylesheet", :href => "/style.css?#{Time.now.to_i}"}       
     %script{ :src => "/jquery.js?#{Time.now.to_i}", :type => "text/javascript" }
-    %script{ :src => "/application.js?#{Time.now.to_i}", :type => "text/javascript" }
-  %body
+    %script{ :src => "/application.js?#{Time.now.to_i}", :type => "text/javascript" }        
+    
+  %body                            
+    %a{:href => "http://twitter.com/ovfailkaart"}
+      %img.ribbon{ :src => "/ribbon.png", :alt => "Volg op twitter"}
     #container{ :align => "center"}
             
       = yield

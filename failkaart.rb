@@ -1,9 +1,13 @@
 require 'rubygems'
 require 'sequel'
 require 'sinatra'
-require 'haml'
+require 'haml'   
+require 'resque'      
+require 'tweet'     
 # Database configuration and models
-require 'models'
+require 'models'  
+
+
 
 # require 'sinatra/cache'
 
@@ -98,7 +102,8 @@ post '/fails' do
     redirect "/#{fail[:id]}"
   else
     fail_id = Fail.insert(:text => params[:text], :votes_count => 1)
-    FailsUser.insert(:user_id => current_user, :fail_id => fail_id)
+    FailsUser.insert(:user_id => current_user, :fail_id => fail_id) 
+    Resque.enqueue(Tweet, "#{params[:text]} door de OV-chipkaart" )
   end
   redirect "/#{fail_id}"
 end

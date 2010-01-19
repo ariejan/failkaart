@@ -13,7 +13,7 @@ set :user, "root"
 
 desc "Hooks to runs after code update"
 task :after_update_code do
-  config_db
+  symlink_files
   chown_for_apache
 end
 
@@ -23,9 +23,10 @@ task :chown_for_apache, :roles => :app do
   run "chown -RL www-data:www-data #{shared_path}"  
 end
 
-desc "Link shared data (like uploaded data) between deployments"
-task :config_db, :roles => :db do
+desc "Symlink files between deployments"
+task :symlink_files, :roles => :db do
   run "ln -sf #{shared_path}/failkaart.db #{release_path}/failkaart.db"
+  run "ln -sf #{shared_path}/twitter.yml #{release_path}/twitter.yml"
 end
 
 
