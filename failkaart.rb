@@ -105,10 +105,9 @@ post '/fails' do
     FailsUser.insert(:user_id => current_user, :fail_id => fail_id) 
     
     # Generate a tweet
-    tweet_url = " http://ov-failkaart.nl/#{fail_id}"
-    tweet_length = 140 - tweet_url.size
-    tweet_text = "#{params[:text]} door de OV-chipkaart"[0..tweet_length-1]
-
+    tweet_url = "http://ov-failkaart.nl/#{fail_id}"
+    tweet_length = 140 - tweet_url.size - 1
+    tweet_text = truncate("#{params[:text]} door de OV-chipkaart", tweet_length)
     tweet = "#{tweet_text} #{tweet_url}"
     Resque.enqueue(Tweet, tweet)
   end
@@ -117,6 +116,17 @@ end
 
 private
 
+  def truncate(text, length)
+    options = {}
+    options[:length] = length || 30
+    options[:omission] = "..."
+
+    if text
+      l = options[:length] - options[:omission].size
+      (text.length > options[:length] ? text[0...l] + options[:omission] : text).to_s
+    end
+  end
+  
   def current_user
     ip = request["REMOTE_ADDR"]
     if u = User.filter(:ip => ip).first
