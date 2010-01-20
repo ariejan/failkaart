@@ -1,13 +1,10 @@
 html, body { 
-  height: 100%; 
 } 
 
 #container { 
-  min-height: 100%; 
 } 
 
 * html #container { 
-  height:  100%; 
 }
 
 body {
@@ -16,44 +13,62 @@ body {
   color: white;
 }
 
-a {
+a,a:visited {
   color: #FFFFFF; 
   text-decoration: underline;
-  font-style: italic;
-}
+  font-style: italic;   
+}     
+img {border:none;}
 
 .fail h1 {
   font-size:64pt;
 }
 
-.yours { 
-  color: #97377d;
-  padding: 10px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  width: 50%;
-  background: white;
+#card {
+	width:574px;
+	height:384px;
+	background:#eb088c url(/card_bg.png) top left no-repeat;
 }
 
-.yours textarea { 
-  width: 75%;
-  height: 4em;
-  font-size: 24pt;
+
+#card .exampleText {
+	color:#ccc7ca;
 }
 
-#footer {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  font-size: 75%;
-  margin-top: 50pt;
-  text-align: right;
+#card textarea { 
+	margin-top:59px;
+	width:450px;
+	background:transparent;
+	margin-left:30px;
+	height:220px;
+	border:none;     
+	font: 30pt Helvetica;   
+	color: #EB088C;     
+}
+                        
+#card input.submit { 
+	margin-top:45px;
+	margin-left:380px;
+	font-size:18px;
+}
+
+#footer {        
   clear: both;
 }
             
-.ribbon {
-	position: absolute;
-	top: 0;
-	right: 0;
-    border: 0;"
+#fail_counter {            
+	text-align:left;
+	margin-left:59px;
+	margin-top:14px;
+	font-size:18px; 
+	color: #EB088C;     
+	
+}
+#twitter {         
+	border:none;
+	float:left;
+}
+#madeby {
+	margin-top:40px;
+	float:right;
 }

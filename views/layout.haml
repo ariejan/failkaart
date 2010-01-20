@@ -1,21 +1,24 @@
+!!! XML
 !!!
 %html
   %head
     %title OV-failkaart
     %link{ :rel => "stylesheet", :href => "/style.css?#{Time.now.to_i}"}       
-    %script{ :src => "/jquery.js?#{Time.now.to_i}", :type => "text/javascript" }
+    %script{ :src => "/jquery.js?#{Time.now.to_i}", :type => "text/javascript" }           
     %script{ :src => "/application.js?#{Time.now.to_i}", :type => "text/javascript" }        
     
   %body                            
-    %a{:href => "http://twitter.com/ovfailkaart"}
-      %img.ribbon{ :src => "/ribbon.png", :alt => "Volg op twitter"}
     #container{ :align => "center"}
             
       = yield
       
     #footer
-      Deze site gebruikt
-      %a{ :href => "http://www.sinatrarb.com/"} Sinatra 
+      #twitter
+        %a{:href => "http://twitter.com/ovfailkaart"}
+          %img{ :src => "/twitter.png", :alt => "Volg op twitter"}  
+      #madeby
+        Deze site gebruikt
+        %a{ :href => "http://www.sinatrarb.com/"} Sinatra 
       
       %script{ :src => "http://google-analytics.com/ga.js",  :type => 'text/javascript' }
       

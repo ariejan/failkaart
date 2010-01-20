@@ -18,11 +18,9 @@
   %br
   %br 
 
-.yours 
-  %form{ :action => "/fails", :method => "post" }
-    %h3 Ook je agressie kwijt?
-    %textarea{ :name => "text" }
-    %br
-    door de OV-chipkaart
-    %br
-    %input{ :type => "submit", :name => "submit", :value => "In/uit checken"}
+#card 
+  %form{ :action => "/fails", :method => "post" } 
+  
+    %textarea#fail_text{ :name => "text", :title => "Ook je agressie kwijt? Type hier dan je bericht!" }
+    #fail_counter
+    %input.submit{ :type => "submit", :name => "submit", :value => "In/uit checken" }
